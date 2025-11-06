@@ -129,14 +129,13 @@ void Update(AlxWindow* w){
 		for (int y = 0; y < GetHeight(); y++)
 		{
 			if(y <= nCeiling)
-				Draw(x,y,BLACK);
+				Point_Render(WINDOW_STD_ARGS,(Vec2){ x,y },BLACK);
 			else if(y > nCeiling && y <= nFloor)
-				Draw(x,y,Pixel_toRGBA(fShade,fShade,fShade,1.0f));
-			else
-			{				
+				Point_Render(WINDOW_STD_ARGS,(Vec2){ x,y },Pixel_toRGBA(fShade,fShade,fShade,1.0f));
+			else{				
 				float b = (y - (float)GetHeight() * 0.5f) / ((float)GetHeight() * 0.5f);
 				b = F32_Clamp(b,0.0f,1.0f);
-                Draw(x,y,Pixel_toRGBA(b,b,b,1.0f));
+                Point_Render(WINDOW_STD_ARGS,(Vec2){ x,y },Pixel_toRGBA(b,b,b,1.0f));
 			}
 		}
 	}
